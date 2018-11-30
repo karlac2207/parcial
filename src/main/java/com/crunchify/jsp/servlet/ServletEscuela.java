@@ -20,14 +20,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author fabian.giraldo
- */
-public class Servlet extends  HttpServlet{
+
+public class ServletStudents extends  HttpServlet{
      protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
          DAOExercises daoEscuela = new DAOExercises();
-         List<Escuela> escuelas= daoEscuela.findAll();
+         List<Exercises> escuelas= daoEscuela.findAll();
          request.setAttribute("estudiantes", escuelas);
          //Redireccionando la informacion
          RequestDispatcher redireccion = request.getRequestDispatcher("index.jsp");
@@ -39,7 +36,7 @@ public class Servlet extends  HttpServlet{
      protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
          DAOStudents daoEstudiante = new DAOStudents();
          String escuela = request.getParameter("escuela");
-         List<Estudiante> estudiantes= daoEstudiante.findAllByEscuela(Integer.parseInt(escuela));
+         List<Students> estudiantes= daoEstudiante.findAllByEscuela(Integer.parseInt(escuela));
          request.setAttribute("estudiantes", estudiantes);
          //Redireccionando la informacion
          RequestDispatcher redireccion = request.getRequestDispatcher("index.jsp");
